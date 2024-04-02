@@ -1,6 +1,7 @@
 from django.shortcuts import render
 import csv
 import requests
+import json
 # Create your views here.
 
 
@@ -18,7 +19,7 @@ def home(request):
             data_rows.append(row_string)
         
         print(data_rows)
-        url = "" #to be added after deploying
+        url = "https://k6yavvueie.execute-api.us-east-1.amazonaws.com/stage_1/dev" #to be added after deploying
         payload="\n".join(data_rows)
 
         headers = {
@@ -26,8 +27,10 @@ def home(request):
         }
 
         response = requests.request("POST", url, headers=headers, data=payload)
-
-        print(response.text)
-        return render(request, 'model/home.html', {'res': response.text})
+        response_data = json.loads(response.text)
+    
+        prediction_strings = ['Abnormal' if pred == 1 else 'Normal' for pred in response_data["Prediction"]]
+        context = {'predictions': enumerate(prediction_strings, start=1)}
+        return render(request, 'model/result.html',context)
     
     return render(request, 'model/home.html')
