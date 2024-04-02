@@ -18,14 +18,19 @@
 <body>
     <div class="center-div"> <!-- Add the center-div class here -->
         <div class="card" style="height: 200px;">
-            <div>
+     
                 <form action="" method="post">
                     {% csrf_token %}
                     <label for="formFileLg" class="form-label">Input Dataset</label>
                     <br>
                     <input class="form-control form-control-lg" id="formFileLg" type="file">
+                    <br>
+                    <br>
+                    <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="submit" value="submit" class="btn btn-success" style="width: 200px;">
                 </form>
-            </div>
+            
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
