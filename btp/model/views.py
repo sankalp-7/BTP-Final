@@ -28,9 +28,16 @@ def home(request):
 
         response = requests.request("POST", url, headers=headers, data=payload)
         response_data = json.loads(response.text)
-    
+        ac=0
+        nc=0
         prediction_strings = ['Abnormal' if pred == 1 else 'Normal' for pred in response_data["Prediction"]]
-        context = {'predictions': enumerate(prediction_strings, start=1)}
+        for p in prediction_strings:
+            if p=='Abnormal':
+                ac+=1
+            else:
+                nc+=1
+        
+        context = {'predictions': enumerate(prediction_strings, start=1),'ac':ac,'nc':nc}
         return render(request, 'model/result.html',context)
     
     return render(request, 'model/home.html')
