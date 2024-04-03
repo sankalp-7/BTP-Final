@@ -11,15 +11,15 @@ def home(request):
         data_rows = []
         
         # Read the uploaded CSV file
-        csv_content = input_file.read().decode('utf-8-sig')  # Remove BOM
+        csv_content = input_file.read().decode('utf-8-sig')  
         csv_reader = csv.reader(csv_content.splitlines())
         
         for row in csv_reader:
             row_string = ','.join(row)
             data_rows.append(row_string)
         
-        print(data_rows)
-        url = "https://k6yavvueie.execute-api.us-east-1.amazonaws.com/stage_1/dev" #to be added after deploying
+        
+        url = "https://v7qkzt8oi1.execute-api.us-east-1.amazonaws.com/stage1/dev" 
         payload="\n".join(data_rows)
 
         headers = {
